@@ -1,6 +1,7 @@
 'use strict';
 
-const pathToImage = 'images';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const pathToImage = '../images';
 const pathToProdImage = `${pathToImage}/products`;
 
 class ProductList {
@@ -8,16 +9,19 @@ class ProductList {
         this.container = container;
         this.goods = [];
         this.allProducts = [];
-        this._chooseProduct();
+        this.getProduct ()
+            .then (data => {
+                this.goods = [...data];
+                this.render();
+            });
     }
 
-    _chooseProduct(){
-        this.goods = [
-            {id: 1, title: 'Notebook', price: 2000, image: '1.jpg'},
-            {id: 2, title: 'Mouse', price: 20, image: '2.jpg'},
-            {id: 3, title: 'Keyboard', price: 200, image: '3.jpg'},
-            {id: 4, title: 'Gamepad', price: 50, image: '4.jpg'},
-        ];
+    getProduct (){
+        return fetch (`${API}/catalogData.json`)
+            .then (data => data.json())
+            .catch (error => {
+                console.log (error)
+            });
     }
 
     render () {
@@ -29,9 +33,9 @@ class ProductList {
         }
     }
 
-    getPrice() {
+    getPrice () {
         let sum = 0;
-        for (let product of this.goods) {
+        for (let product of this.allProducts) {
             sum += product.price;
         }
         console.log (sum);
@@ -39,54 +43,82 @@ class ProductList {
 }
 
 class ProductItem {
-    constructor (product) {
-        this.id = product.id;
-        this.title = product.title;
+    constructor (product, image = 'https://placehold.it/200x150') {
+        this.id = product.id_product;
+        this.title = product.product_name;;
         this.price = product.price;
-        this.image = `${pathToProdImage}/${product.image}`;
+        this.image = image;
     }
 
     renderMarkup () {
         return `
             <div class="product-item" data-id = ${this.id}>
-                <img class="product-img" src="${this.image}" alt="${this.title}>
+                <img class="product-img" src="${this.image}" alt="${this.title}">
                 <div class="product-description">
-                <h3>${this.title}</h3>
-                <p>${this.price}</p>
-                <button class="buy-btn">Купить</button>
+                    <h3>${this.title}</h3>
+                    <p>${this.price}</p>
+                    <button class="buy-btn">Купить</button>
                 </div>
             </div>
         `
     }
 }
 
+class ShopingCart {
+    constructor(container = ".shoping-cart"){
+        this.container = container;
+        this.goods = [];
+        this._clickBasket();
+        this._addProductToShopCart()
+            .then(data => { 
+                this.goods = [...data.contents];
+                this.render()
+            });
+    }
+
+    render () {
+        const block = document.querySelector(this.container);
+        for (let product of this.goods) {
+            const productObj = new ShopingCartItem();
+            block.insertAdjacentHTML('beforeend', productObj.render(product));
+        }
+    }
+
+    _addProductToShopCart () {
+        return fetch(`${API}/getBasket.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    _clickBasket() {
+        document.querySelector(".shop-cart__btn").addEventListener('click', () => {
+            document.querySelector(this.container).classList.toggle('visible-hidden');
+        });
+    }
+}
+
+class ShopingCartItem {
+    render (product) {
+        return `
+            <div class="cart-item" data-id="${product.id_product}">
+                <div class="product-bio">
+                <img src="${product.img}" alt="Some image">
+                <div class="product-desc">
+                <p class="product-title">${product.product_name}</p>
+                <p class="product-quantity">Quantity: ${product.quantity}</p>
+            <p class="product-single-price">$${product.price} for each</p>
+            </div>
+            </div>
+            <div class="right-block">
+                <p class="product-price">$${product.quantity * product.price}</p>
+                <button class="del-btn" data-id="${product.id_product}">&times;</button>
+            </div>
+            </div>
+        `
+    }
+}
+
 let prodList = new ProductList();
-prodList.render();
-prodList.getPrice();
-
-// class ShopCart {
-
-//     addProductToShopCart () {
-        
-//     }
-
-//     removeProductFromShopCart () {
-
-//     }
-
-//     changeNumbOfProducts() {
-        
-//     }
-
-//     changeSumForProducts() {
-        
-//     }
-
-//     calculateTotalShopCartSum() {
-        
-//     }
-
-//     MarkupProductsInShopCart (){
-
-//     }
-// }
+let shopCart = new ShopingCart();
