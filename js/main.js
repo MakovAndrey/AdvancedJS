@@ -29,9 +29,9 @@ const renderProduct = (product) => {
 методом .join(' ') мы заменяем запятую на пробел.
 */
 const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item));
+    const productsList = list.map(item => renderProduct(item)).join(' ');
     console.log(productsList);
-    document.querySelector('.products').innerHTML = productsList.join(' ');
+    document.querySelector('.products').innerHTML = productsList;
 };
 
 renderPage(products);
