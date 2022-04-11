@@ -86,10 +86,6 @@ header {
     border-bottom: 10px solid white;
 }
 
-.visible-hidden {
-    display: none;
-}
-
 .cart{
     position: relative;
 }
