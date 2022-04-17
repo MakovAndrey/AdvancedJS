@@ -9,6 +9,8 @@ class ProductList {
         this.container = container;
         this.goods = [];
         this.allProducts = [];
+        this.filtered = [];
+        this._init();
         this.getProduct ()
             .then (data => {
                 this.goods = [...data];
@@ -40,11 +42,30 @@ class ProductList {
         }
         console.log (sum);
     }
+
+    _init(){
+        document.querySelector('.search-form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.filter(document.querySelector('.search-field').value)
+        })
+    }
+    filter(value){
+        const regexp = new RegExp(value, 'i');
+        this.filtered = this.allProducts.filter(elem => regexp.test(elem.title));
+        this.allProducts.forEach(product => {
+            const block = document.querySelector(`.product-item[data-id="${product.id_product}"]`);
+            if(!this.filtered.includes(product)){
+                block.classList.add('visible-hidden');
+            } else {
+                block.classList.remove('visible-hidden');
+            }
+        })
+    }
 }
 
 class ProductItem {
     constructor (product, image = 'https://placehold.it/200x150') {
-        this.id = product.id_product;
+        this.id_product = product.id_product;
         this.title = product.product_name;;
         this.price = product.price;
         this.image = image;
@@ -52,12 +73,16 @@ class ProductItem {
 
     renderMarkup () {
         return `
-            <div class="product-item" data-id = ${this.id}>
+            <div class="product-item" data-id = ${this.id_product}>
                 <img class="product-img" src="${this.image}" alt="${this.title}">
                 <div class="product-description">
                     <h3>${this.title}</h3>
                     <p>${this.price}</p>
-                    <button class="buy-btn">Купить</button>
+                    <button class="buy-btn"
+                    data-id="${this.id_product}"
+                    data-name="${this.product_name}"
+                    data-price="${this.price}"
+                    >Купить</button>
                 </div>
             </div>
         `
@@ -65,7 +90,7 @@ class ProductItem {
 }
 
 class ShopingCart {
-    constructor(container = ".shoping-cart"){
+    constructor(container = "shoping-cart"){
         this.container = container;
         this.goods = [];
         this._clickBasket();
@@ -77,7 +102,7 @@ class ShopingCart {
     }
 
     render () {
-        const block = document.querySelector(this.container);
+        const block = document.querySelector('.shoping-cart');
         for (let product of this.goods) {
             const productObj = new ShopingCartItem();
             block.insertAdjacentHTML('beforeend', productObj.render(product));
@@ -93,8 +118,8 @@ class ShopingCart {
     }
 
     _clickBasket() {
-        document.querySelector(".shop-cart__btn").addEventListener('click', () => {
-            document.querySelector(this.container).classList.toggle('visible-hidden');
+        document.querySelector('.shop-cart__btn').addEventListener('click', () => {
+            document.querySelector('.shoping-cart').classList.toggle('visible-hidden');
         });
     }
 }

@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Интернет-магазин</title>
-    <link rel="stylesheet" href="../styles/normalize.css">
-    <link rel="stylesheet" href="../styles/style.css">
+    <title>Search</title>
+    <link rel="stylesheet" href="../lesson-2/css/normalize.css">
+    <link rel="stylesheet" href="../lesson-2/css/style.css">
+    <title>Document</title>
 </head>
 <body>
 
     <header>
         <div class="logo">E-shop</div>
         <div class="cart">
+            <form action="#" class="search-form">
+                <input type="text" class="search-field">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
             <button class="shop-cart__btn" type="button">Корзина</button>
             <div class="shoping-cart visible-hidden"> </div>
         </div>
@@ -28,7 +35,9 @@
 			<!--beforeend-->
 		</p>
 		<!--afterend-->
-    
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
