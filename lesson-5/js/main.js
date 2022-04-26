@@ -12,13 +12,17 @@ const app = new Vue({
         shopCartImg: 'https://placeimg.com/50/100/any',
         products: [],
         productImg: 'https://placeimg.com/200/150/any',
-        error: false
+        errorURL: false
     },
 
     methods: {
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
+                .catch (error =>{
+                    console.log (error);
+                    this.errorURL = true;
+                })
         },
 
         addProduct(item){
@@ -49,8 +53,8 @@ const app = new Vue({
                 })
         },
 
-        filter(){
-            let regexp = new RegExp(this.userSearch, 'i');
+        filter(userSearch){
+            let regexp = new RegExp(userSearch, 'i');
             this.filtered = this.products.filter(el => regexp.test(el.product_name));
         }
     },
@@ -62,6 +66,7 @@ const app = new Vue({
                     this.$data.cartItems.push(item);
             }
         });
+
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for (let item of data){
@@ -69,6 +74,14 @@ const app = new Vue({
                     this.$data.filtered.push(item);
                 }
             });
+
+        this.getJson(`getProducts.json`)
+            .then(data => {
+                for(let item of data){
+                    this.$data.products.push(item);
+                    this.$data.filtered.push(item);
+                }
+            })
     }
 
 });
