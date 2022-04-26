@@ -1,0 +1,61 @@
+[
+    {
+        "id_product": 0,
+        "product_name": "Геймпад",
+        "price": 5500
+    },
+
+    {
+        "id_product": 1,
+        "product_name": "Монитор",
+        "price": 5000
+    },
+
+    {
+        "id_product": 2,
+        "product_name": "Джойстик",
+        "price": 15000
+    },
+
+    {
+        "id_product": 3,
+        "product_name": "Колонки",
+        "price": 3900
+    },
+
+    {
+        "id_product": 4,
+        "product_name": "Принтер",
+        "price": 2850
+    },
+
+    {
+        "id_product": 5,
+        "product_name": "Сканер",
+        "price": 1705
+    },
+
+    {
+        "id_product": 6,
+        "product_name": "Наушники",
+        "price": 4600
+    },
+
+    {
+        "id_product": 7,
+        "product_name": "Колонки",
+        "price": 3330
+    },
+
+    {
+        "id_product": 8,
+        "product_name": "Вэбкамера",
+        "price": 1199
+    },
+
+    {
+        "id_product": 8,
+        "product_name": "SSD диск",
+        "price": 1199
+    }
+]
