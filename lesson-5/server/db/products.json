@@ -1,61 +1,82 @@
 [
     {
         "id_product": 0,
-        "product_name": "Геймпад",
+        "image": "./images/product_img/0.jpg",
+        "cartImage": "./images/cart_images/0.jpg",
+        "product_name": "Куртка",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 5500
     },
 
     {
         "id_product": 1,
-        "product_name": "Монитор",
+        "image": "./images/product_img/1.jpg",
+        "cartImage": "./images/cart_images/1.jpg",
+        "product_name": "Джинсы",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 5000
     },
 
     {
         "id_product": 2,
-        "product_name": "Джойстик",
+        "image": "./images/product_img/2.jpg",
+        "cartImage": "./images/cart_images/2.jpg",
+        "product_name": "Кофта",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 15000
     },
 
     {
         "id_product": 3,
-        "product_name": "Колонки",
+        "image": "./images/product_img/3.jpg",
+        "cartImage": "./images/cart_images/3.jpg",
+        "product_name": "Джинсы",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 3900
     },
 
     {
         "id_product": 4,
-        "product_name": "Принтер",
+        "image": "./images/product_img/4.jpg",
+        "cartImage": "./images/cart_images/4.jpg",
+        "product_name": "Майка",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 2850
     },
 
     {
         "id_product": 5,
-        "product_name": "Сканер",
+        "image": "./images/product_img/5.jpg",
+        "cartImage": "./images/cart_images/5.jpg",
+        "product_name": "Кепка",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 1705
     },
 
     {
         "id_product": 6,
-        "product_name": "Наушники",
+        "image": "./images/product_img/6.jpg",
+        "cartImage": "./images/cart_images/6.jpg",
+        "product_name": "Рубашка",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 4600
     },
 
     {
         "id_product": 7,
-        "product_name": "Колонки",
+        "image": "./images/product_img/7.jpg",
+        "cartImage": "./images/cart_images/7.jpg",
+        "product_name": "Куртка",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 3330
     },
 
     {
         "id_product": 8,
-        "product_name": "Вэбкамера",
-        "price": 1199
-    },
-
-    {
-        "id_product": 8,
-        "product_name": "SSD диск",
+        "image": "./images/product_img/8.jpg",
+        "cartImage": "./images/cart_images/8.jpg",
+        "product_name": "Шорты",
+        "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
         "price": 1199
     }
 ]

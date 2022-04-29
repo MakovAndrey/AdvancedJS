@@ -10,7 +10,7 @@ const app = new Vue({
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
-                    this.error = true;
+                    this.error = error;
                 })
         },
 
@@ -24,7 +24,7 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    this.error = true;
+                    this.error = error;
                 })
         },
 
@@ -38,12 +38,24 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    this.error = true;
+                    this.error = error;
                 })
         },
+
+        deleteJson (url, data){
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(result => result.json())
+                .catch(error => {
+                    this.error = error;
+                })
+        },
+        }
     },
 
-    mounted(){
-    }
-
-});
+);

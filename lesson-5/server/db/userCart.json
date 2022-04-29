@@ -1,0 +1,24 @@
+{
+    "amount": 0,
+    "countGoods": 0,
+    "contents": [
+        {
+            "quantity": 2,
+            "id_product": 2,
+            "image": "./images/product_img/2.jpg",
+            "cartImage": "./images/cart_images/2.jpg",
+            "product_name": "Кофта",
+            "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
+            "price": 15000
+        },
+        {
+            "quantity": 1,
+            "id_product": 0,
+            "image": "./images/product_img/0.jpg",
+            "cartImage": "./images/cart_images/0.jpg",
+            "product_name": "Куртка",
+            "description": "Mollitia, rem iste, sint omnis, quaerat recusandae facere atque architecto libero laborum inventore. ",
+            "price": 5500
+        }
+    ]
+}
